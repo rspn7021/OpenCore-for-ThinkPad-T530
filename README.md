@@ -132,5 +132,5 @@ I/O Port Access-
 
 >Secure Boot
 
-NOTE:Enable Boot Order Lock after you've set-up the order of the Boot Drives. This prevents WindowsBootManager from taking over the first slot of the boot drives. This way, you don't need to enable the LauncherOption in OpenCore!
+NOTE: Enable Boot Order Lock after you've set-up the order of the Boot Drives. This prevents WindowsBootManager from taking over the first slot of the boot drives. This way, you don't need to enable the LauncherOption in OpenCore!
 
