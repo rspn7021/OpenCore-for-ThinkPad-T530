@@ -1,9 +1,9 @@
-ThinkPad T530 OpenCore for Hackintosh
+THINKPAD T530 OPENCORE FOR HACKINTOSH
 
-About
+ABOUT:
 OpenCore EFI Folder for running macOS High Sierra all the way up to macOS Sequoia on the Lenovo ThinkPad T530. For Sequoia, you need atleast Big Sur to be installed and use OpenCore Legacy Patcher.
 
-Non Functional:
+NON FUNCTIONAL:
 >SD Card reader (Above Sonoma)
 
 >FingerPrint Reader
@@ -12,7 +12,8 @@ Non Functional:
 
 >VGA Port (Not supported after MacOS Mountain Lion)
 
-Specs:
+SPECS OF LAPTOP I USED:
+
 >Model	Lenovo ThinkPad T530, Model# 2392-AWG
 
 >Chipset	Intel QM77 Express
@@ -41,8 +42,9 @@ Specs:
 
 >ExpressCard/34 slot	disabled
 
-Things to Consider:
-DeviceProperties: Enable the correct Framebuffer-Patch for your display. The T530 comes with either one of the following display panels: HD+ or HD, supporting different resolutions. Each requires a different framebuffer patch (AAPL,ig-platform-id) with different connector patches:
+THINGS TO CONSIDER:
+
+>DeviceProperties: Enable the correct Framebuffer-Patch for your display. The T530 comes with either one of the following display panels: HD+ or HD, supporting different resolutions. Each requires a different framebuffer patch (AAPL,ig-platform-id) with different connector patches:
 
 -AAPL,ig-platform-id 04006601 = HD+ = WSXGA and FullHD. Resolution: ≥ 1600x900 px. (Default)
 -AAPL,ig-platform-id 03006601 = HD = SD. Resolution: ≤ 1366x768 px.
@@ -94,7 +96,7 @@ memtab: Adds Memory tab to "About this Mac" section (macOS ≤ 12 only). Require
 
 f16c: Disables f16c instruction set reporting in macOS 13.3 or newer to prevent CoreGraphics crashing on Ivy Bridge CPUs
 
-BIOS Settings to Consider:
+BIOS SETTINGS TO CONSIDER:
 
 >USB- UEFI BIOS Support : Enabled
 
