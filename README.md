@@ -44,7 +44,9 @@ SPECS OF LAPTOP I USED:
 
 THINGS TO CONSIDER:
 
->DeviceProperties: Enable the correct Framebuffer-Patch for your display. The T530 comes with either one of the following display panels: HD+ or HD, supporting different resolutions. Each requires a different framebuffer patch (AAPL,ig-platform-id) with different connector patches:
+>DeviceProperties:
+
+Enable the correct Framebuffer-Patch for your display. The T530 comes with either one of the following display panels: HD+ or HD, supporting different resolutions. Each requires a different framebuffer patch (AAPL,ig-platform-id) with different connector patches:
 
 -AAPL,ig-platform-id 04006601 = HD+ = WSXGA and FullHD. Resolution: ≥ 1600x900 px. (Default)
 -AAPL,ig-platform-id 03006601 = HD = SD. Resolution: ≤ 1366x768 px.
@@ -55,7 +57,9 @@ THINGS TO CONSIDER:
 -Disable the entry PciRoot(0x0)/Pci(0x2,0x0) by placing # in front of it.
 -Enable #PciRoot(0x0)/Pci(0x2,0x0) 1366x768 px by deleting the leading # and the description 1366x768 px, so that it looks this: PciRoot(0x0)/Pci(0x2,0x0).
 
-SMBIOS (Must Change): Under SystemProductName, select the correct SMBIOS for your CPU and generate a serial, etc. for it. My EFI utilizes Patches and kexts from OpenCore Legacy Patcher which allow using the correct SMBIOS for Ivy Bridge CPUs on macOS 11.3 and newer (Darwin Kernel 20.4+), so native Power Management and OTA System Updates are working oob which wouldn't be possible otherwise past macOS Catalina.
+SMBIOS (Must Change)
+
+Under SystemProductName, select the correct SMBIOS for your CPU and generate a serial, etc. for it. My EFI utilizes Patches and kexts from OpenCore Legacy Patcher which allow using the correct SMBIOS for Ivy Bridge CPUs on macOS 11.3 and newer (Darwin Kernel 20.4+), so native Power Management and OTA System Updates are working oob which wouldn't be possible otherwise past macOS Catalina.
 
 -For Intel i7: MacBookPro10,1 (Default)
 -For Intel i5: MacBookPro10,2 
