@@ -116,21 +116,21 @@ BIOS SETTINGS TO CONSIDER:
 
 >UEFI/Legacy Boot: UEFI only
 
-Things to Disable:
+THINGS TO CONSIDER:
 
->I/O Port Access-
+I/O Port Access-
 
--Wireless WAN
+>Wireless WAN
 
--ExpressCard Slot
+>ExpressCard Slot
 
--eSerial ATA Port
+>eSerial ATA Port
 
--FingerPrint Reader
+>FingerPrint Reader
 
--Antitheft and Computrace
+>Antitheft and Computrace
 
--Secure Boot
+>Secure Boot
 
 NOTE:Enable Boot Order Lock after you've set-up the order of the Boot Drives. This prevents WindowsBootManager from taking over the first slot of the boot drives. This way, you don't need to enable the LauncherOption in OpenCore!
 
