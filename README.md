@@ -5,8 +5,11 @@ OpenCore EFI Folder for running macOS High Sierra all the way up to macOS Sequoi
 
 Non Functional:
 >SD Card reader (Above Sonoma)
+
 >FingerPrint Reader
+
 >NVidia Quadro GPU (Disable in BIOS)
+
 >VGA Port (Not supported after MacOS Mountain Lion)
 
 Specs:
