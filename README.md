@@ -73,34 +73,57 @@ Case 2: 3rd Party WiFi/BT Cards. These require the 1vyrain jailbreak to unlock t
 
 Used boot arguments and NVRAM variables
 >Boot-args:
-gfxrst=1: Draws Apple logo at 2nd boot stage instead of framebuffer copying → Smoothens transition from the progress bar to the Login Screen/Desktop when an external monitor is attached.
-ipc_control_port_options=0: Fixes issues with Firefox not working and electron-based Apps like Discord in macOS 12+ when SIP is lowered.
+
+-gfxrst=1: Draws Apple logo at 2nd boot stage instead of framebuffer copying → Smoothens transition from the progress bar to the Login Screen/Desktop when an external monitor is attached.
+
+-ipc_control_port_options=0: Fixes issues with Firefox not working and electron-based Apps like Discord in macOS 12+ when SIP is lowered.
 
 >NVRAM variables:
+
 OCLP Settings -allow_amfi: Does the same as boot-arg amfi_get_out_of_my_way=0x1 but only when the OpenCore Patcher App is running. Otherwise you can't run the root patcher. But this didn't work the last time I tried this setting might be deprecated.
+
 hbfx-ahbm: Lets the system hibernate instead of using regular sleep. Requires HibernationFixup.kext. More details here
+
 revblock:media: Blocks mediaanalysisd on Ventura+ (for Metal 1 GPUs). Required so apps like Firefox don't crash. Requires RestrictEvents.kext
+
 revpatch:
+
 sbvmm: Forces VMM SB model, allowing OTA updates for unsupported models on macOS 11.3 and newer. Requires RestrictEvents.kext.
+
 memtab: Adds Memory tab to "About this Mac" section (macOS ≤ 12 only). Requires RestrictEvents.
+
 f16c: Disables f16c instruction set reporting in macOS 13.3 or newer to prevent CoreGraphics crashing on Ivy Bridge CPUs
 
 BIOS Settings to Consider:
+
 >USB- UEFI BIOS Support : Enabled
+
 >Display- OS Detection for NVidia Optimus: Disabled
+
 >Security- Security Chip: Disabled
+
 >Virtualization- Intel Virtualization Technology: Enabled
+
 >CSM Support: Disabled
+
 >Boot Mode: Quick
+
 >UEFI/Legacy Boot: UEFI only
 
 Things to Disable:
+
 >I/O Port Access-
+
 -Wireless WAN
+
 -ExpressCard Slot
+
 -eSerial ATA Port
+
 -FingerPrint Reader
+
 -Antitheft and Computrace
+
 -Secure Boot
 
 NOTE:Enable Boot Order Lock after you've set-up the order of the Boot Drives. This prevents WindowsBootManager from taking over the first slot of the boot drives. This way, you don't need to enable the LauncherOption in OpenCore!
