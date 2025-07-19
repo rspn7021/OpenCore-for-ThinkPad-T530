@@ -11,18 +11,31 @@ Non Functional:
 
 Specs:
 >Model	Lenovo ThinkPad T530, Model# 2392-AWG
+
 >Chipset	Intel QM77 Express
+
 >BIOS Version	2.77, unlocked with 1vyRain
+
 >Processor	Intel Core i5 3360M
+
 >Memory	16GB Samsung DDR3 1600MHz, Dual-Channel
+
 >Minimum: 8GB
+
 >Samsung 870 EVO SATA 1TB SSD
+
 >Integrated Graphics	Intel HD Graphics 4000, 2048 MB RAM assigned
+
 >Display	15.6" HD+ TFT Display (1920x1080 px)
+
 >Audio	Realtek ALC269VC Rev.3 (Layout-id:39)
+
 >Ethernet	Intel 82579LM Gigabit Network Connection
+
 >Intel Centrino Ultimate-N 6300, 11a/b/g/n
+
 >Multicard Reader	Ricoh 4-in-1 reader (MMC, SD, SDHC, SDXC)
+
 >ExpressCard/34 slot	disabled
 
 Things to Consider:
