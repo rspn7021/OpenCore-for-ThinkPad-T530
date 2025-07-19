@@ -1,7 +1,7 @@
 ThinkPad T530 OpenCore for Hackintosh
 
 About
-OpenCore EFI Folder for running macOS High Sierra all the way up to macOS Sequoia on the Lenovo ThinkPad T530.
+OpenCore EFI Folder for running macOS High Sierra all the way up to macOS Sequoia on the Lenovo ThinkPad T530. For Sequoia, you need atleast Big Sur to be installed and use OpenCore Legacy Patcher.
 
 Non Functional:
 >SD Card reader (Above Sonoma)
@@ -28,36 +28,39 @@ Specs:
 Things to Consider:
 DeviceProperties: Enable the correct Framebuffer-Patch for your display. The T530 comes with either one of the following display panels: HD+ or HD, supporting different resolutions. Each requires a different framebuffer patch (AAPL,ig-platform-id) with different connector patches:
 
-AAPL,ig-platform-id 04006601 = HD+ = WSXGA and FullHD. Resolution: ≥ 1600x900 px. (Default)
-AAPL,ig-platform-id 03006601 = HD = SD. Resolution: ≤ 1366x768 px.
+-AAPL,ig-platform-id 04006601 = HD+ = WSXGA and FullHD. Resolution: ≥ 1600x900 px. (Default)
+-AAPL,ig-platform-id 03006601 = HD = SD. Resolution: ≤ 1366x768 px.
 
-If your T530 has an SD panel, do the following;
+>If your T530 has an SD panel, do the following;
 
-Go to DeviceProperties
-Disable the entry PciRoot(0x0)/Pci(0x2,0x0) by placing # in front of it.
-Enable #PciRoot(0x0)/Pci(0x2,0x0) 1366x768 px by deleting the leading # and the description 1366x768 px, so that it looks this: PciRoot(0x0)/Pci(0x2,0x0).
+-Go to DeviceProperties
+-Disable the entry PciRoot(0x0)/Pci(0x2,0x0) by placing # in front of it.
+-Enable #PciRoot(0x0)/Pci(0x2,0x0) 1366x768 px by deleting the leading # and the description 1366x768 px, so that it looks this: PciRoot(0x0)/Pci(0x2,0x0).
 
 SMBIOS (Must Change): Under SystemProductName, select the correct SMBIOS for your CPU and generate a serial, etc. for it. My EFI utilizes Patches and kexts from OpenCore Legacy Patcher which allow using the correct SMBIOS for Ivy Bridge CPUs on macOS 11.3 and newer (Darwin Kernel 20.4+), so native Power Management and OTA System Updates are working oob which wouldn't be possible otherwise past macOS Catalina.
 
-For Intel i7: MacBookPro10,1 (Default)
-For Intel i5: MacBookPro10,2 
+-For Intel i7: MacBookPro10,1 (Default)
+-For Intel i5: MacBookPro10,2 
 
 WiFi and Bluetooth (Read carefully!)
 
 Case 1: Intel Wifi/BT Card. In stock configuration, the T530 comes with an Intel WiFi/Bluetooth card, so you need different kexts for WiFi and Bluetooth. It may work with OpenIntelWireless kexts.
 Check the compatibility list to find out if your card is supported.
-Remove all kexts containing "Brcm" in the name.
-Add the required Kexts for your Intel card to EFI/OC/Kexts folder and config.plist before attempting to boot with this EFI!
+-Remove all kexts containing "Brcm" in the name.
+-Add the required Kexts for your Intel card to EFI/OC/Kexts folder and config.plist before attempting to boot with this EFI!
+
 Case 2: 3rd Party WiFi/BT Cards. These require the 1vyrain jailbreak to unlock the BIOS to disable the WiFi Whitelist (not required if the 3rd party card is whitelisted).
-I use a WiFi/BT Card by Broadcom, so my setup requires AirportBrcmFixup for WiFi and BrcmPatchRAM and additional satellite kexts for Bluetooth. Read the comments in the config for details.
-BrcmFirmwareData.kext is used for injecting the required firmware for Broadcom devices. Alternatively, you can use BrcmFirmwareRepo.kext which is more efficient but has to be installed into System/Library/Extensions since it cannot be injected by Bootloaders.
-If you use a WiFi/BT Card from a different vendor than Broadcom, remove the Brcm Kexts and add the Kext(s) required for your card to the kext folder and config.plist before deploying the EFI folder!
+-WiFi/BT Card by Broadcom requires AirportBrcmFixup for WiFi and BrcmPatchRAM and additional satellite kexts for Bluetooth.
+-BrcmFirmwareData.kext is used for injecting the required firmware for Broadcom devices. 
+-Alternatively, you can use BrcmFirmwareRepo.kext which is more efficient but has to be installed into System/Library/Extensions since it cannot be injected by Bootloaders.
+-If you use a WiFi/BT Card from a different vendor than Broadcom, remove the Brcm Kexts and add the Kext(s) required for your card to the kext folder and config.plist before deploying the EFI folder!
 
 Used boot arguments and NVRAM variables
-Boot-args:
+>Boot-args:
 gfxrst=1: Draws Apple logo at 2nd boot stage instead of framebuffer copying → Smoothens transition from the progress bar to the Login Screen/Desktop when an external monitor is attached.
 ipc_control_port_options=0: Fixes issues with Firefox not working and electron-based Apps like Discord in macOS 12+ when SIP is lowered.
-NVRAM variables:
+
+>NVRAM variables:
 OCLP Settings -allow_amfi: Does the same as boot-arg amfi_get_out_of_my_way=0x1 but only when the OpenCore Patcher App is running. Otherwise you can't run the root patcher. But this didn't work the last time I tried this setting might be deprecated.
 hbfx-ahbm: Lets the system hibernate instead of using regular sleep. Requires HibernationFixup.kext. More details here
 revblock:media: Blocks mediaanalysisd on Ventura+ (for Metal 1 GPUs). Required so apps like Firefox don't crash. Requires RestrictEvents.kext
